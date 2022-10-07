@@ -1,6 +1,10 @@
-import sys, os
+import sys, os, requests
 from skillshare import Skillshare, splash
-from magic import cookie
+
+response = requests.get("https://www.skillshare.com/")
+x = (response.cookies.get_dict())
+value = x['PHPSESSID']
+cookie = "'PHPSESSID=%s'"%value
 
 # or by class ID:
 # dl.download_course_by_class_id(189505397)
